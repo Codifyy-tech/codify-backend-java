@@ -23,7 +23,7 @@ public class UsuarioInserir {
 
         // Inserir usuario
         
-        user.setEmail("codify@teste.com");
+        user.setEmail("codifyDOIS@teste.com");
         user.setGenero("H");
         user.setNome("Rafael Mafort");
         user.setSenha("senha123");

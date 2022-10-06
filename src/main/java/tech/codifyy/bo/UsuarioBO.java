@@ -5,6 +5,7 @@ import tech.codifyy.conexao.Conexao;
 import tech.codifyy.dao.UsuarioDAO;
 
 import java.sql.Connection;
+import java.util.List;
 
 
 public class UsuarioBO {
@@ -23,5 +24,10 @@ public class UsuarioBO {
         }
     }
 
+    // Selecionar Usuario
+
+    public List<Usuario> listar(){
+        return usuariodao.select();
+    }
 
 }

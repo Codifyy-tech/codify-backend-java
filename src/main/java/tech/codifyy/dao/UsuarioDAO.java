@@ -4,7 +4,9 @@ import tech.codifyy.beans.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UsuarioDAO {
 
@@ -61,6 +63,39 @@ public class UsuarioDAO {
 		}
 	}
 
+	// Selecionar
+	public ArrayList<Usuario> select() {
+		PreparedStatement user = null;
+		ArrayList<Usuario> retornarUsuario = new ArrayList<Usuario>();
+		try {
+			user = connection.prepareStatement("select * from T_SCPD_USUARIO");
+			ResultSet rs = user.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					Usuario usuario = new Usuario();
+					usuario.setId(rs.getInt(1));
+					usuario.setEmail(rs.getString(2));
+					usuario.setGenero(rs.getString(3));
+					usuario.setNome(rs.getString(4));
+					usuario.setSenha(rs.getString(5));
+					usuario.setTelefone(rs.getLong(6));
+					usuario.setNascimento(rs.getDate(7));
+					usuario.setTipo(rs.getString(8));
+					usuario.setEndereco(rs.getString(9));
+					usuario.setCep(rs.getInt(10));
+					usuario.setCidade(rs.getString(11));
+					usuario.setDistrito(rs.getString(12));
+					usuario.setEstado(rs.getString(13));
+					retornarUsuario.add(usuario);
+				}
+				return retornarUsuario;
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			return null;
+		}
+	}
 
 
 	// Deletar apenas para testar
