@@ -5,46 +5,46 @@ import java.util.Date;
 @XmlRootElement
 public class Usuario {
 
-    private Integer id;
+    private Integer _id;
     private String email;
-    private String genero;
-    private String nome;
-    private String senha;
-    private Long telefone;
-    private Date nascimento;
-    private String tipo;
-    private String endereco;
+    private String genre;
+    private String name;
+    private String password;
+    private Long phone;
+    private Date birth_date;
+    private String type;
+    private String address;
     private Integer cep;
-    private String cidade;
-    private String distrito;
-    private String estado;
+    private String city;
+    private String district;
+    private String state;
 
     public Usuario(){
 
     }
 
-    public Usuario(Integer id, String email, String genero, String nome, String senha, Long telefone, Date nascimento, String tipo, String endereco, Integer cep, String cidade, String distrito, String estado) {
-        this.id = id;
+    public Usuario(Integer _id, String email, String genre, String name, String password, Long phone, Date birth_date, String type, String address, Integer cep, String city, String district, String state) {
+        this._id = _id;
         this.email = email;
-        this.genero = genero;
-        this.nome = nome;
-        this.senha = senha;
-        this.telefone = telefone;
-        this.nascimento = nascimento;
-        this.tipo = tipo;
-        this.endereco = endereco;
+        this.genre = genre;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.birth_date = birth_date;
+        this.type = type;
+        this.address = address;
         this.cep = cep;
-        this.cidade = cidade;
-        this.distrito = distrito;
-        this.estado = estado;
+        this.city = city;
+        this.district = district;
+        this.state = state;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer get_id() {
+        return _id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void set_id(Integer _id) {
+        this._id = _id;
     }
 
     public String getEmail() {
@@ -55,60 +55,60 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Long getTelefone() {
-        return telefone;
+    public Long getPhone() {
+        return phone;
     }
 
-    public void setTelefone(Long telefone) {
-        this.telefone = telefone;
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
-    public Date getNascimento() {
-        return nascimento;
+    public Date getBirth_date() {
+        return birth_date;
     }
 
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
+    public void setBirth_date(Date birth_date) {
+        this.birth_date = birth_date;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getType() {
+        return type;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getCep() {
@@ -119,27 +119,27 @@ public class Usuario {
         this.cep = cep;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCity() {
+        return city;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getDistrito() {
-        return distrito;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setDistrito(String distrito) {
-        this.distrito = distrito;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getState() {
+        return state;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setState(String state) {
+        this.state = state;
     }
 }
