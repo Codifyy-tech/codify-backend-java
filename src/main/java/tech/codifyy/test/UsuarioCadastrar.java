@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class UsuarioInserir {
+public class UsuarioCadastrar {
 
     public static void main(String[] args) throws Excecao, ParseException {
 
@@ -24,17 +24,17 @@ public class UsuarioInserir {
         // Inserir usuario
         
         user.setEmail("codifyDOIS@teste.com");
-        user.setGenero("H");
-        user.setNome("Rafael Mafort");
-        user.setSenha("senha123");
-        user.setTelefone(11988887777L);
-        user.setNascimento(sdf.parse("22/09/2003"));
-        user.setTipo("Admin");
-        user.setEndereco("Avenida Paulista 1100");
+        user.setGenre("H");
+        user.setName("Rafael Mafort");
+        user.setPassword("senha123");
+        user.setPhone(11988887777L);
+        user.setBirth_date(sdf.parse("22/09/2003"));
+        user.setType("Admin");
+        user.setAddress("Avenida Paulista 1100");
         user.setCep(12345678);
-        user.setCidade("São Paulo");
-        user.setDistrito("Pinheiros");
-        user.setEstado("SP");
+        user.setCity("São Paulo");
+        user.setDistrict("Pinheiros");
+        user.setState("SP");
 
         userbo.inserirBO(user);
 
