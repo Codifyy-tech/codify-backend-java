@@ -25,7 +25,7 @@ public class UsuarioResource {
         return usuariobo.listar();
     }
 
-    @PUT
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(Usuario usuario, @Context UriInfo uriInfo) {
         Resposta resposta = new Resposta();

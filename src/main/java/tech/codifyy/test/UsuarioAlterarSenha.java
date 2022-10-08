@@ -15,8 +15,8 @@ public class UsuarioAlterarSenha {
         UsuarioDAO usuariodao = new UsuarioDAO(con);
 
         // alterar endereco por nome
-        usuario.setSenha("novasenha");
-        usuario.setId(7);
+        usuario.setPassword("novasenha");
+        usuario.set_id(7);
         System.out.println(usuariodao.alterarSenha(usuario));
 
         Conexao.fecharConexao(con);
