@@ -2,14 +2,14 @@ package tech.codifyy.beans;
 
 public class Resposta {
     private String mensagem;
-    private String token;
+    private Integer id;
 
     public Resposta() {
     }
 
-    public Resposta(String mensagem, String token) {
+    public Resposta(String mensagem, Integer id) {
         this.mensagem = mensagem;
-        this.token = token;
+        this.id = id;
     }
 
     public String getMensagem() {
@@ -20,11 +20,11 @@ public class Resposta {
         this.mensagem = mensagem;
     }
 
-    public String getToken() {
-        return token;
+    public Integer getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
