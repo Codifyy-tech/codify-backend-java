@@ -1,13 +1,13 @@
 package tech.codifyy.beans;
 
-public class Resposta {
+public class RespostaRequisição {
     private String mensagem;
     private Integer id;
 
-    public Resposta() {
+    public RespostaRequisição() {
     }
 
-    public Resposta(String mensagem, Integer id) {
+    public RespostaRequisição(String mensagem, Integer id) {
         this.mensagem = mensagem;
         this.id = id;
     }

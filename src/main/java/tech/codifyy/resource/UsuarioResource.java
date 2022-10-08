@@ -1,8 +1,7 @@
 package tech.codifyy.resource;
 
 
-import org.json.JSONObject;
-import tech.codifyy.beans.Resposta;
+import tech.codifyy.beans.RespostaRequisição;
 import tech.codifyy.beans.Usuario;
 import tech.codifyy.bo.Excecao;
 import tech.codifyy.bo.UsuarioBO;
@@ -14,7 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
-@Path("/usuario")
+@Path("/user")
 public class UsuarioResource {
 
     private UsuarioBO usuariobo = new UsuarioBO();
@@ -26,9 +25,10 @@ public class UsuarioResource {
     }
 
     @POST
+    @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(Usuario usuario, @Context UriInfo uriInfo) {
-        Resposta resposta = new Resposta();
+        RespostaRequisição resposta = new RespostaRequisição();
         try {
             usuariobo.inserirBO(usuario);
             resposta.setMensagem("Usuário cadastrado com sucesso");
