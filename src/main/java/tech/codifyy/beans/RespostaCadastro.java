@@ -1,13 +1,16 @@
 package tech.codifyy.beans;
 
-public class RespostaRequisição {
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class RespostaCadastro {
     private String mensagem;
     private Integer id;
 
-    public RespostaRequisição() {
+    public RespostaCadastro() {
     }
 
-    public RespostaRequisição(String mensagem, Integer id) {
+    public RespostaCadastro(String mensagem, Integer id) {
         this.mensagem = mensagem;
         this.id = id;
     }
