@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="codify-backend-java-main" />
         <module name="CodifyV1" />
         <module name="codify-backend-java" />
       </profile>

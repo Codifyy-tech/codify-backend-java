@@ -63,7 +63,9 @@ public class UsuarioDAO {
 		}
 	}
 
-	// Selecionar
+	// Selecionar todos
+
+	private static ArrayList<Usuario> retornarUsuario;
 	public ArrayList<Usuario> select() {
 		PreparedStatement user = null;
 		ArrayList<Usuario> retornarUsuario = new ArrayList<Usuario>();
@@ -97,6 +99,16 @@ public class UsuarioDAO {
 		}
 	}
 
+
+	// Selecionar por ID
+	public Usuario select(int id){
+		for (int i = 0; i < retornarUsuario.size(); i++){
+			if(retornarUsuario.get(i).get_id() == id){
+				return retornarUsuario.get(i);
+			}
+		}
+		return null;
+	}
 
 	// Deletar apenas para testar
 	public String deletar(Usuario usuario) {
