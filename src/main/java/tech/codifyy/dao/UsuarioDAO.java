@@ -108,9 +108,8 @@ public class UsuarioDAO {
 
 
 	// Selecionar por ID
-	public ArrayList<Usuario> selectId(int id){
+	public Usuario selectId(int id){
 		PreparedStatement user = null;
-		ArrayList<Usuario> retornarUsuario = new ArrayList<Usuario>();
 		try {
 			user = connection.prepareStatement("select * from T_SCPD_USUARIO");
 			ResultSet rs = user.executeQuery();
@@ -131,12 +130,12 @@ public class UsuarioDAO {
 						usuario.setCity(rs.getString(11));
 						usuario.setDistrict(rs.getString(12));
 						usuario.setState(rs.getString(13));
-						retornarUsuario.add(usuario);
+						return usuario;
 					} else{
 						System.out.println("Usuario não encontrado");
 					}
 				}
-				return retornarUsuario;
+				return null;
 			} else {
 				return null;
 			}
