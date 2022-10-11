@@ -1,7 +1,9 @@
 package tech.codifyy.resource;
 
 
+import oracle.jdbc.proxy.annotation.Post;
 import org.json.JSONObject;
+import tech.codifyy.beans.Autenticacao;
 import tech.codifyy.beans.RespostaCadastro;
 import tech.codifyy.beans.Usuario;
 import tech.codifyy.bo.Excecao;
@@ -48,5 +50,11 @@ public class UsuarioResource {
                 .entity(resposta)
                 .build();
         return response;
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response autenticar(Autenticacao aut) {
+
     }
 }
