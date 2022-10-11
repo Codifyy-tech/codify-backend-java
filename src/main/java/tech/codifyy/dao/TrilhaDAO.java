@@ -5,7 +5,10 @@ import tech.codifyy.bo.Excecao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -37,7 +40,7 @@ public class TrilhaDAO {
 
             );
             preparedStatement.setInt(1, trilha.get_id());
-            preparedStatement.setInt(2, trilha.getTechnology().get_id());
+            preparedStatement.setInt(2, trilha.getId_tecnologia());
             preparedStatement.setString(3, trilha.getTitle());
             preparedStatement.setString(4, trilha.getUrl());
             preparedStatement.setString(5, trilha.getAuthor());
@@ -51,6 +54,39 @@ public class TrilhaDAO {
                 return "Erro ao cadastrar";
             }
         } catch (SQLException e) {
+            throw new Excecao(e.getMessage());
+        }
+
+    }
+
+    public List<Trilha> selecionarTrilhas(){
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Trilha> trilhas = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM T_SCPD_TRILHA "
+            );
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    Trilha trilha = new Trilha();
+                    trilha.set_id(resultSet.getInt(1));
+                    trilha.setId_tecnologia(resultSet.getInt(2));
+                    trilha.setTitle(resultSet.getString(3));
+                    trilha.setUrl(resultSet.getString(4));
+                    trilha.setAuthor(resultSet.getString(5));
+                    trilha.setDescription(resultSet.getString(6));
+                    trilha.setTopics(new ArrayList<>(Arrays.asList(resultSet.getString(7).split(","))));
+                    trilha.setCategory(resultSet.getString(8));
+
+                    trilhas.add(trilha);
+                }
+                return trilhas;
+            } else {
+                return null;
+            }
+        } catch(SQLException e){
             throw new Excecao(e.getMessage());
         }
     }

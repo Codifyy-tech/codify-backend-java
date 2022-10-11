@@ -3,24 +3,22 @@ package tech.codifyy.beans;
 import java.util.List;
 
 public class Trilha {
-    private Integer _id;
+    private Integer _id, id_tecnologia;
     private String title, author, description, category, url;
     private List<String> topics;
-
-    private Tecnologia technology;
 
     public Trilha() {
     }
 
-    public Trilha(Integer _id, String title, String author, String description, String category, String url, List<String> topics, Tecnologia technology) {
+    public Trilha(Integer _id, Integer id_tecnologia, String title, String author, String description, String category, String url, List<String> topics) {
         this._id = _id;
+        this.id_tecnologia = id_tecnologia;
         this.title = title;
         this.author = author;
         this.description = description;
         this.category = category;
         this.url = url;
         this.topics = topics;
-        this.technology = technology;
     }
 
     public Integer get_id() {
@@ -79,11 +77,11 @@ public class Trilha {
         this.topics = topics;
     }
 
-    public Tecnologia getTechnology() {
-        return technology;
+    public Integer getId_tecnologia() {
+        return id_tecnologia;
     }
 
-    public void setTechnology(Tecnologia technology) {
-        this.technology = technology;
+    public void setId_tecnologia(Integer id_tecnologia) {
+        this.id_tecnologia = id_tecnologia;
     }
 }

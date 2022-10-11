@@ -68,7 +68,7 @@ public class UsuarioDAO {
 	private static ArrayList<Usuario> retornarUsuario;
 	public ArrayList<Usuario> select() {
 		PreparedStatement user = null;
-		ArrayList<Usuario> retornarUsuario = new ArrayList<Usuario>();
+		ArrayList<Usuario> retornarUsuario = new ArrayList<>();
 		try {
 			user = connection.prepareStatement("select * from T_SCPD_USUARIO");
 			ResultSet rs = user.executeQuery();
