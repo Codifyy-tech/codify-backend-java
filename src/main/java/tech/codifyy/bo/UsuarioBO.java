@@ -72,4 +72,9 @@ public class UsuarioBO {
         return usuariodao.selectId(id);
     }
 
+    // Selecioanr por Email
+    public Usuario selecionarEmail(String email) {
+        return usuariodao.selecionarEmail(email);
+    }
+
 }

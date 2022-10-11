@@ -55,6 +55,6 @@ public class UsuarioResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response autenticar(Autenticacao aut) {
-        return null;
+
     }
 }
