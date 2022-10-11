@@ -146,7 +146,42 @@ public class UsuarioDAO {
 			Conexao.fecharConexao(connection);
 		}
 	}
-	
+
+	public Usuario selecionarEmail(String email){
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		try {
+			preparedStatement = connection.prepareStatement(
+					"SELECT * FROM T_SCPD_USUARIO "
+							+ "WHERE DS_EMAIL = ?"
+			);
+			rs = preparedStatement.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					Usuario usuario = new Usuario();
+					usuario.set_id(rs.getInt(1));
+					usuario.setEmail(rs.getString(2));
+					usuario.setGenre(rs.getString(3));
+					usuario.setName(rs.getString(4));
+					usuario.setPassword(rs.getString(5));
+					usuario.setPhone(rs.getLong(6));
+					usuario.setBirth_date(rs.getDate(7));
+					usuario.setType(rs.getString(8));
+					usuario.setAddress(rs.getString(9));
+					usuario.setCep(rs.getInt(10));
+					usuario.setCity(rs.getString(11));
+					usuario.setDistrict(rs.getString(12));
+					usuario.setState(rs.getString(13));
+					return usuario;
+				}
+			}
+			return null;
+		} catch (SQLException e) {
+			throw new Excecao(e.getMessage());
+		} finally {
+			Conexao.fecharConexao(connection);
+		}
+	}
 
 	// Deletar apenas para testar
 	public String deletar(Usuario usuario) {
