@@ -2,17 +2,17 @@ package tech.codifyy.beans;
 
 import java.util.List;
 
-public class Trilhas {
+public class Trilha {
     private Integer _id;
     private String title, author, description, category, url;
     private List<String> topics;
 
     private Tecnologia technology;
 
-    public Trilhas () {
+    public Trilha() {
     }
 
-    public Trilhas(Integer _id, String title, String author, String description, String category, String url, List<String> topics, Tecnologia technology) {
+    public Trilha(Integer _id, String title, String author, String description, String category, String url, List<String> topics, Tecnologia technology) {
         this._id = _id;
         this.title = title;
         this.author = author;

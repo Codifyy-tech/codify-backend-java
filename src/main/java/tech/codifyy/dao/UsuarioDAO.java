@@ -37,9 +37,9 @@ public class UsuarioDAO {
 			user.setString(12, usuario.getState());
 
 			if (user.executeUpdate() > 0) {
-				return "Inserido com sucesso";
+				return "Cadastrado com sucesso";
 			} else {
-				return "Erro ao inserir";
+				return "Erro ao cadastrar";
 			}
 		} catch (SQLException e) {
 			return e.getMessage();
