@@ -63,6 +63,8 @@ public class UsuarioDAO {
 			}
 		} catch (SQLException e) {
 			return e.getMessage();
+		} finally {
+			Conexao.fecharConexao(connection);
 		}
 	}
 
@@ -140,6 +142,8 @@ public class UsuarioDAO {
 			}
 		} catch (SQLException e) {
 			return null;
+		} finally {
+			Conexao.fecharConexao(connection);
 		}
 	}
 
@@ -155,6 +159,8 @@ public class UsuarioDAO {
 			}
 		} catch (SQLException e) {
 			return e.getMessage();
+		} finally {
+			Conexao.fecharConexao(connection);
 		}
 	}
 }

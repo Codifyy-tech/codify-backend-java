@@ -2,6 +2,7 @@ package tech.codifyy.dao;
 
 import tech.codifyy.beans.Trilha;
 import tech.codifyy.bo.Excecao;
+import tech.codifyy.conexao.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,6 +56,8 @@ public class TrilhaDAO {
             }
         } catch (SQLException e) {
             throw new Excecao(e.getMessage());
+        } finally {
+            Conexao.fecharConexao(connection);
         }
 
     }
@@ -88,6 +91,8 @@ public class TrilhaDAO {
             }
         } catch(SQLException e){
             throw new Excecao(e.getMessage());
+        } finally {
+            Conexao.fecharConexao(connection);
         }
     }
 }
