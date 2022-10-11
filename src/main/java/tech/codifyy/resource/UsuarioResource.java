@@ -39,19 +39,14 @@ public class UsuarioResource {
     // POST
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response cadastrar(Usuario usuario, @Context UriInfo uriInfo) {
-        RespostaCadastro resposta = new RespostaCadastro();
-        try {
-            String retorno = usuariobo.inserirBO(usuario);
-            if (retorno.equals("Inserido com sucesso")) {
-                resposta.setMensagem("Usuário cadastrado com sucesso");
-                return Response.status(Response.Status.OK).entity(resposta).build();
-            } else {
-                resposta.setMensagem(retorno);
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(resposta).build();
-            }
-        } catch (Excecao e) {
-            throw new RuntimeException(e);
-        }
+    public Response cadastrar(Usuario usuario) {
+        RespostaCadastro resposta = new RespostaCadastro("Usuário cadastrado com sucesso");
+        usuariobo.inserirBO(usuario);
+        Response response = Response
+                .status(Response.Status.CREATED)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(resposta)
+                .build();
+        return response;
     }
 }

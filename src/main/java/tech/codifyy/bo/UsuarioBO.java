@@ -69,7 +69,7 @@ public class UsuarioBO {
 
     // Selecionar por ID
     public List<Usuario> listar(int id){
-        return usuariodao.select(id);
+        return usuariodao.selectId(id);
     }
 
 }

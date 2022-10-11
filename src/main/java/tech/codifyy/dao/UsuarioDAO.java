@@ -1,6 +1,7 @@
 package tech.codifyy.dao;
 
 import tech.codifyy.beans.Usuario;
+import tech.codifyy.conexao.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +44,8 @@ public class UsuarioDAO {
 			}
 		} catch (SQLException e) {
 			return e.getMessage();
+		} finally {
+			Conexao.fecharConexao(connection);
 		}
 	}
 
@@ -96,12 +99,14 @@ public class UsuarioDAO {
 			}
 		} catch (SQLException e) {
 			return null;
+		} finally {
+			Conexao.fecharConexao(connection);
 		}
 	}
 
 
 	// Selecionar por ID
-	public ArrayList<Usuario> select(int id){
+	public ArrayList<Usuario> selectId(int id){
 		PreparedStatement user = null;
 		ArrayList<Usuario> retornarUsuario = new ArrayList<Usuario>();
 		try {
