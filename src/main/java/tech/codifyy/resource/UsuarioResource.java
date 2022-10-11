@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
-@Path("/usuario")
+@Path("/user")
 public class UsuarioResource {
 
     private UsuarioBO usuariobo = new UsuarioBO();
@@ -40,6 +40,7 @@ public class UsuarioResource {
 
     // POST
     @POST
+    @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(Usuario usuario) {
         RespostaCadastro resposta = new RespostaCadastro("Usuário cadastrado com sucesso");
@@ -55,6 +56,9 @@ public class UsuarioResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response autenticar(Autenticacao aut) {
+        if (usuariobo.checarLogin(aut)) {
 
+        }
+        return null;
     }
 }

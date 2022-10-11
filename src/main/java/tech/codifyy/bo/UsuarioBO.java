@@ -1,5 +1,6 @@
 package tech.codifyy.bo;
 
+import tech.codifyy.beans.Autenticacao;
 import tech.codifyy.beans.Usuario;
 import tech.codifyy.conexao.Conexao;
 import tech.codifyy.dao.UsuarioDAO;
@@ -73,8 +74,8 @@ public class UsuarioBO {
     }
 
     // Selecioanr por Email
-    public Usuario selecionarEmail(String email) {
-        return usuariodao.selecionarEmail(email);
+    public Boolean checarLogin(Autenticacao aut) {
+        return usuariodao.checarLogin(aut);
     }
 
 }
