@@ -2,7 +2,7 @@ package tech.codifyy.resource;
 
 
 import org.json.JSONObject;
-import tech.codifyy.beans.Resposta;
+import tech.codifyy.beans.RespostaCadastro;
 import tech.codifyy.beans.Usuario;
 import tech.codifyy.bo.Excecao;
 import tech.codifyy.bo.UsuarioBO;
@@ -36,18 +36,22 @@ public class UsuarioResource {
         return usuariobo.listar(id);
     }
 
-    // PUT
-    @PUT
+    // POST
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(Usuario usuario, @Context UriInfo uriInfo) {
-        Resposta resposta = new Resposta();
+        RespostaCadastro resposta = new RespostaCadastro();
         try {
-            usuariobo.inserirBO(usuario);
-            resposta.setMensagem("Usuário cadastrado com sucesso");
-            resposta.setId(usuario.get_id());
+            String retorno = usuariobo.inserirBO(usuario);
+            if (retorno.equals("Inserido com sucesso")) {
+                resposta.setMensagem("Usuário cadastrado com sucesso");
+                return Response.status(Response.Status.OK).entity(resposta).build();
+            } else {
+                resposta.setMensagem(retorno);
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(resposta).build();
+            }
         } catch (Excecao e) {
             throw new RuntimeException(e);
         }
-        return Response.status(Response.Status.OK).entity(resposta).build();
     }
 }
