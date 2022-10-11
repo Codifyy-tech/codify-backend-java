@@ -101,13 +101,41 @@ public class UsuarioDAO {
 
 
 	// Selecionar por ID
-	public Usuario select(int id){
-		for (int i = 0; i < retornarUsuario.size(); i++){
-			if(retornarUsuario.get(i).get_id() == id){
-				return retornarUsuario.get(i);
+	public ArrayList<Usuario> select(int id){
+		PreparedStatement user = null;
+		ArrayList<Usuario> retornarUsuario = new ArrayList<Usuario>();
+		try {
+			user = connection.prepareStatement("select * from T_SCPD_USUARIO");
+			ResultSet rs = user.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					if(rs.getInt(1) == id){
+						Usuario usuario = new Usuario();
+						usuario.set_id(rs.getInt(1));
+						usuario.setEmail(rs.getString(2));
+						usuario.setGenre(rs.getString(3));
+						usuario.setName(rs.getString(4));
+						usuario.setPassword(rs.getString(5));
+						usuario.setPhone(rs.getLong(6));
+						usuario.setBirth_date(rs.getDate(7));
+						usuario.setType(rs.getString(8));
+						usuario.setAddress(rs.getString(9));
+						usuario.setCep(rs.getInt(10));
+						usuario.setCity(rs.getString(11));
+						usuario.setDistrict(rs.getString(12));
+						usuario.setState(rs.getString(13));
+						retornarUsuario.add(usuario);
+					} else{
+						System.out.println("Usuario não encontrado");
+					}
+				}
+				return retornarUsuario;
+			} else {
+				return null;
 			}
+		} catch (SQLException e) {
+			return null;
 		}
-		return null;
 	}
 
 	// Deletar apenas para testar

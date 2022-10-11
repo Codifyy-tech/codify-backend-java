@@ -32,7 +32,7 @@ public class UsuarioResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Usuario buscar(@PathParam("id") int id){
+    public List<Usuario> buscar(@PathParam("id") int id){
         return usuariobo.listar(id);
     }
 
