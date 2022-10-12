@@ -1,9 +1,10 @@
 package tech.codifyy.bo;
 
-import tech.codifyy.beans.Autenticacao;
+import tech.codifyy.services.Autenticacao;
 import tech.codifyy.beans.Usuario;
 import tech.codifyy.conexao.Conexao;
 import tech.codifyy.dao.UsuarioDAO;
+import tech.codifyy.exception.Excecao;
 
 import java.sql.Connection;
 import java.util.List;
@@ -72,9 +73,11 @@ public class UsuarioBO {
     public Usuario listar(int id){
         return usuariodao.selectId(id);
     }
-    
+
+    //Selecionar por Email
     public Usuario listarEmail(Autenticacao aut) {
         String email = aut.getEmail();
         return usuariodao.selecionarEmail(email);
     }
+
 }

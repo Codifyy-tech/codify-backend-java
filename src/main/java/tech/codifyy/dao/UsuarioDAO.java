@@ -1,8 +1,7 @@
 package tech.codifyy.dao;
 
-import tech.codifyy.beans.Autenticacao;
 import tech.codifyy.beans.Usuario;
-import tech.codifyy.bo.Excecao;
+import tech.codifyy.exception.Excecao;
 import tech.codifyy.conexao.Conexao;
 
 import java.sql.Connection;
@@ -102,7 +101,7 @@ public class UsuarioDAO {
 				return null;
 			}
 		} catch (SQLException e) {
-			return null;
+			throw new Excecao(e.getMessage());
 		} finally {
 			Conexao.fecharConexao(connection);
 		}

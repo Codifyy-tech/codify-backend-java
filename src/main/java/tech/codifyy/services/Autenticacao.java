@@ -1,4 +1,4 @@
-package tech.codifyy.beans;
+package tech.codifyy.services;
 
 public class Autenticacao {
     private String email;

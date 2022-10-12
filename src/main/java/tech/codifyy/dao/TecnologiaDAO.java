@@ -1,7 +1,7 @@
 package tech.codifyy.dao;
 
 import tech.codifyy.beans.Tecnologia;
-import tech.codifyy.bo.Excecao;
+import tech.codifyy.exception.Excecao;
 import tech.codifyy.conexao.Conexao;
 
 import java.sql.Connection;

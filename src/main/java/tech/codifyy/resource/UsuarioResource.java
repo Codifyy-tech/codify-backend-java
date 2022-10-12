@@ -1,20 +1,13 @@
 package tech.codifyy.resource;
 
 
-import oracle.jdbc.proxy.annotation.Post;
-import org.json.JSONObject;
-import tech.codifyy.beans.Autenticacao;
-import tech.codifyy.beans.RespostaCadastro;
+import tech.codifyy.services.Autenticacao;
 import tech.codifyy.beans.Usuario;
-import tech.codifyy.bo.Excecao;
 import tech.codifyy.bo.UsuarioBO;
 
-import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
 @Path("/user")

@@ -1,7 +1,7 @@
 package tech.codifyy.test;
 
 import tech.codifyy.beans.Usuario;
-import tech.codifyy.bo.Excecao;
+import tech.codifyy.exception.Excecao;
 import tech.codifyy.bo.UsuarioBO;
 import tech.codifyy.conexao.Conexao;
 
