@@ -43,7 +43,8 @@ public class UsuarioResource {
     @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(Usuario usuario) {
-        RespostaCadastro resposta = new RespostaCadastro("Usuário cadastrado com sucesso");
+//        RespostaCadastro resposta = new RespostaCadastro("Usuário cadastrado com sucesso");
+        String resposta = "{\"message\": \"Usuário cadastrado com sucesso\"}";
         usuariobo.inserirBO(usuario);
         Response response = Response
                 .status(Response.Status.CREATED)
@@ -54,11 +55,16 @@ public class UsuarioResource {
     }
 
     @POST
+    @Path("/auth")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response autenticar(Autenticacao aut) {
-        if (usuariobo.checarLogin(aut)) {
-
-        }
+            Usuario usuario = usuariobo.listarEmail(aut);
+            if (usuario.getEmail().equals(aut.getEmail()) && usuario.getPassword().equals(aut.getPassword())) {
+                return Response
+                        .status(Response.Status.OK)
+                        .type(MediaType.APPLICATION_JSON)
+                        .build();
+            }
         return null;
     }
 }

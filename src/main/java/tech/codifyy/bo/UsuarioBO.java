@@ -72,10 +72,9 @@ public class UsuarioBO {
     public Usuario listar(int id){
         return usuariodao.selectId(id);
     }
-
-    // Selecioanr por Email
-    public Boolean checarLogin(Autenticacao aut) {
-        return usuariodao.checarLogin(aut);
+    
+    public Usuario listarEmail(Autenticacao aut) {
+        String email = aut.getEmail();
+        return usuariodao.selecionarEmail(email);
     }
-
 }

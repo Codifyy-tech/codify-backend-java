@@ -148,63 +148,38 @@ public class UsuarioDAO {
 		}
 	}
 
-//	public Usuario selecionarEmail(String email){
-//		PreparedStatement preparedStatement = null;
-//		ResultSet rs = null;
-//		try {
-//			preparedStatement = connection.prepareStatement(
-//					"SELECT * FROM T_SCPD_USUARIO "
-//							+ "WHERE DS_EMAIL = ?"
-//			);
-//			rs = preparedStatement.executeQuery();
-//			if (rs != null) {
-//				while (rs.next()) {
-//					if (rs.getString(2).equals(email)) {
-//						Usuario usuario = new Usuario();
-//						usuario.set_id(rs.getInt(1));
-//						usuario.setEmail(rs.getString(2));
-//						usuario.setGenre(rs.getString(3));
-//						usuario.setName(rs.getString(4));
-//						usuario.setPassword(rs.getString(5));
-//						usuario.setPhone(rs.getLong(6));
-//						usuario.setBirth_date(rs.getDate(7));
-//						usuario.setType(rs.getString(8));
-//						usuario.setAddress(rs.getString(9));
-//						usuario.setCep(rs.getInt(10));
-//						usuario.setCity(rs.getString(11));
-//						usuario.setDistrict(rs.getString(12));
-//						usuario.setState(rs.getString(13));
-//						return usuario;
-//					} else {
-//						return null;
-//					}
-//				}
-//			}
-//			return null;
-//		} catch (SQLException e) {
-//			throw new Excecao(e.getMessage());
-//		} finally {
-//			Conexao.fecharConexao(connection);
-//		}
-//	}
-
-	public Boolean checarLogin (Autenticacao aut) {
+	public Usuario selecionarEmail(String email){
 		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
 		try {
 			preparedStatement = connection.prepareStatement(
-					"SELECT DS_EMAIL, DS_SENHA "
-					+ "WHERE DS_EMAIL = ?"
+					"SELECT * FROM T_SCPD_USUARIO "
+							+ "WHERE DS_EMAIL = ?"
 			);
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				if (rs.getString(1).equals(aut.getEmail()) &&
-						rs.getString(2).equals(aut.getPassword())) {
-					return true;
+			preparedStatement.setString(1, email);
+			rs = preparedStatement.executeQuery();
+			if (rs.next()) {
+				if (rs.getString(2).equals(email)) {
+					Usuario usuario = new Usuario();
+					usuario.set_id(rs.getInt(1));
+					usuario.setEmail(rs.getString(2));
+					usuario.setGenre(rs.getString(3));
+					usuario.setName(rs.getString(4));
+					usuario.setPassword(rs.getString(5));
+					usuario.setPhone(rs.getLong(6));
+					usuario.setBirth_date(rs.getDate(7));
+					usuario.setType(rs.getString(8));
+					usuario.setAddress(rs.getString(9));
+					usuario.setCep(rs.getInt(10));
+					usuario.setCity(rs.getString(11));
+					usuario.setDistrict(rs.getString(12));
+					usuario.setState(rs.getString(13));
+					return usuario;
 				} else {
-					return false;
+					return null;
 				}
 			}
+
 			return null;
 		} catch (SQLException e) {
 			throw new Excecao(e.getMessage());
