@@ -3,12 +3,14 @@ package tech.codifyy.dao;
 import tech.codifyy.beans.Usuario;
 import tech.codifyy.exception.Excecao;
 import tech.codifyy.conexao.Conexao;
+import tech.codifyy.services.AlteracaoSenha;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class UsuarioDAO {
 
@@ -42,25 +44,6 @@ public class UsuarioDAO {
 				return "Cadastrado com sucesso";
 			} else {
 				return "Erro ao cadastrar";
-			}
-		} catch (SQLException e) {
-			return e.getMessage();
-		} finally {
-			Conexao.fecharConexao(connection);
-		}
-	}
-
-	// Update Senha
-	public String alterarSenha(Usuario usuario) {
-		PreparedStatement user = null;
-		try {
-			user = connection.prepareStatement("update T_SCPD_USUARIO set ds_senha = ? where id_usuario = ?");
-			user.setString(1, usuario.getPassword());
-			user.setInt(2, usuario.get_id());
-			if (user.executeUpdate() > 0) {
-				return "Alterado com sucesso";
-			} else {
-				return "Erro ao alterar";
 			}
 		} catch (SQLException e) {
 			return e.getMessage();
@@ -147,6 +130,7 @@ public class UsuarioDAO {
 		}
 	}
 
+	// SELECIONAR POR EMAIL
 	public Usuario selecionarEmail(String email){
 		PreparedStatement preparedStatement = null;
 		ResultSet rs = null;
@@ -182,6 +166,25 @@ public class UsuarioDAO {
 			return null;
 		} catch (SQLException e) {
 			throw new Excecao(e.getMessage());
+		} finally {
+			Conexao.fecharConexao(connection);
+		}
+	}
+
+	// Update Senha
+	public String alterarSenha(Usuario usuario) {
+		PreparedStatement user = null;
+		try {
+			user = connection.prepareStatement("update T_SCPD_USUARIO set ds_senha = ? where id_usuario = ?");
+			user.setString(1, usuario.getPassword());
+			user.setInt(2, usuario.get_id());
+			if (user.executeUpdate() > 0) {
+				return "Alterado com sucesso";
+			} else {
+				return "Erro ao alterar";
+			}
+		} catch (SQLException e) {
+			return e.getMessage();
 		} finally {
 			Conexao.fecharConexao(connection);
 		}

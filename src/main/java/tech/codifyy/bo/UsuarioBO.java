@@ -84,4 +84,6 @@ public class UsuarioBO {
         return usuariodao.selecionarEmail(email);
     }
 
+    //Alterar Senha
+
 }

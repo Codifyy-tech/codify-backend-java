@@ -31,12 +31,11 @@ public class UsuarioResource {
         return usuariobo.listar(id);
     }
 
-    // POST
+    // POST REGISTER
     @POST
     @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrar(Usuario usuario) {
-//        RespostaCadastro resposta = new RespostaCadastro("Usuário cadastrado com sucesso");
         String resposta = "{\"message\": \"Usuário cadastrado com sucesso\"}";
         usuariobo.inserirBO(usuario);
         Response response = Response
@@ -47,6 +46,7 @@ public class UsuarioResource {
         return response;
     }
 
+    // POST LOGIN
     @POST
     @Path("/auth")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -70,4 +70,6 @@ public class UsuarioResource {
         }
         return response;
     }
+
+    //PUT
 }

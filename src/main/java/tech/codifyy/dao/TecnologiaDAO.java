@@ -22,6 +22,8 @@ public class TecnologiaDAO {
             preparedStatement = connection.prepareStatement(
                     "INSERT INTO T_SCPD_TECNOLOGIA"
                             + "(NM_TECNOLOGIA,CD_COR_FUNDO, DS_ICONE)"
+                            + "VALUES "
+                            +"(?, ?, ?)"
             );
             preparedStatement.setString(1, tecnologia.getName());
             preparedStatement.setString(2, tecnologia.getColor());
@@ -33,7 +35,7 @@ public class TecnologiaDAO {
                 return "Erro ao cadastrar";
             }
         } catch (SQLException e) {
-            throw new Excecao(e.getMessage());
+            return e.getMessage();
         } finally {
             Conexao.fecharConexao(connection);
         }

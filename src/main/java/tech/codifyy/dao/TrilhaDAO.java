@@ -1,6 +1,7 @@
 package tech.codifyy.dao;
 
 import tech.codifyy.beans.Trilha;
+import tech.codifyy.beans.Usuario;
 import tech.codifyy.exception.Excecao;
 import tech.codifyy.conexao.Conexao;
 
@@ -30,24 +31,24 @@ public class TrilhaDAO {
         return items;
     }
 
+    // INSERIR TRILHA
     public String inserir(Trilha trilha) throws Excecao {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(
                     "INSERT INTO T_SCPD_TRILHA "
-                    + "(ID_TRILHA, ID_TECNOLOGIA, NM_TRILHA, DS_URL_TRILHA, NM_AUTOR, DS_TRILHA, DS_TOPICOS, NM_CATEGORIA)"
+                    + "(ID_TECNOLOGIA, NM_TRILHA, DS_URL_TRILHA, NM_AUTOR, DS_TRILHA, DS_TOPICOS, NM_CATEGORIA)"
                     + "VALUES "
-                    +"(?, ?, ?, ?, ?, ?, ?, ? )"
+                    +"(?, ?, ?, ?, ?, ?, ? )"
 
             );
-            preparedStatement.setInt(1, trilha.get_id());
-            preparedStatement.setInt(2, trilha.getId_tecnologia());
-            preparedStatement.setString(3, trilha.getTitle());
-            preparedStatement.setString(4, trilha.getUrl());
-            preparedStatement.setString(5, trilha.getAuthor());
-            preparedStatement.setString(6, trilha.getDescription());
-            preparedStatement.setString(7, converter(trilha.getTopics()));
-            preparedStatement.setString(8, trilha.getCategory());
+            preparedStatement.setInt(1, trilha.getId_tecnologia());
+            preparedStatement.setString(2, trilha.getTitle());
+            preparedStatement.setString(3, trilha.getUrl());
+            preparedStatement.setString(4, trilha.getAuthor());
+            preparedStatement.setString(5, trilha.getDescription());
+            preparedStatement.setString(6, converter(trilha.getTopics()));
+            preparedStatement.setString(7, trilha.getCategory());
 
             if (preparedStatement.executeUpdate() > 0) {
                 return "Cadastrado com sucesso";
@@ -55,13 +56,14 @@ public class TrilhaDAO {
                 return "Erro ao cadastrar";
             }
         } catch (SQLException e) {
-            throw new Excecao(e.getMessage());
+            return e.getMessage();
         } finally {
             Conexao.fecharConexao(connection);
         }
 
     }
 
+    // LISTAR TRILHAS
     public List<Trilha> selecionarTrilhas(){
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -90,6 +92,40 @@ public class TrilhaDAO {
                 return null;
             }
         } catch(SQLException e){
+            throw new Excecao(e.getMessage());
+        } finally {
+            Conexao.fecharConexao(connection);
+        }
+    }
+
+    // LISTAR TRILHAS POR ID
+    public Trilha selectId(int id){
+        PreparedStatement user = null;
+        try {
+            user = connection.prepareStatement("select * from T_SCPD_TRILHA");
+            ResultSet rs = user.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    if(rs.getInt(1) == id){
+                        Trilha trilha = new Trilha();
+                        trilha.set_id(rs.getInt(1));
+                        trilha.setId_tecnologia(rs.getInt(2));
+                        trilha.setTitle(rs.getString(3));
+                        trilha.setUrl(rs.getString(4));
+                        trilha.setAuthor(rs.getString(5));
+                        trilha.setDescription(rs.getString(6));
+                        trilha.setTopics((List<String>) rs.getArray(7));
+                        trilha.setCategory(rs.getString(8));
+                        return trilha;
+                    } else{
+                        System.out.println("Usuario não encontrado");
+                    }
+                }
+                return null;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
             throw new Excecao(e.getMessage());
         } finally {
             Conexao.fecharConexao(connection);
