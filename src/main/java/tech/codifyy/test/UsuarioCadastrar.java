@@ -23,10 +23,11 @@ public class UsuarioCadastrar {
 
         // Inserir usuario
         
-        user.setEmail("codify@teste.com");
+        user.setEmail("codifyy@teste.com");
         user.setGenre("H");
         user.setName("Rafael Mafort");
         user.setPassword("senha123");
+        user.setConfirm_password("senha123");
         user.setPhone(11988887777L);
         user.setBirth_date(sdf.parse("22/09/2003"));
         user.setType("Admin");
@@ -36,7 +37,7 @@ public class UsuarioCadastrar {
         user.setDistrict("Pinheiros");
         user.setState("SP");
 
-        userbo.inserirBO(user);
+        System.out.println(userbo.inserirBO(user));
 
         Conexao.fecharConexao(con);
     }

@@ -8,6 +8,7 @@ import tech.codifyy.exception.Excecao;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Objects;
 
 
 public class UsuarioBO {
@@ -29,6 +30,9 @@ public class UsuarioBO {
         }
         if(user.getPassword().length()< 6){
             return "A senha deve ter pelo menos 6 caracteres";
+        }
+        if (!Objects.equals(user.getConfirm_password(), user.getPassword())){
+            return "As senhas não correspondem";
         }
         if(user.getBirth_date() == null){
             return "Campo obrigatório";
@@ -52,7 +56,7 @@ public class UsuarioBO {
             user.setEmail(user.getEmail());
             user.setGenre(user.getGenre());
             user.setName(user.getName());
-            user.setPassword(user.getPassword());
+            user.setPassword(user.getConfirm_password());
             user.setBirth_date(user.getBirth_date());
             user.setAddress(user.getAddress());
             user.setCep(user.getCep());

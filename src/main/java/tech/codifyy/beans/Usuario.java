@@ -10,6 +10,7 @@ public class Usuario {
     private String genre;
     private String name;
     private String password;
+    private String confirm_password;
     private Long phone;
     private Date birth_date;
     private String type;
@@ -23,12 +24,13 @@ public class Usuario {
 
     }
 
-    public Usuario(Integer _id, String email, String genre, String name, String password, Long phone, Date birth_date, String type, String address, Integer cep, String city, String district, String state) {
+    public Usuario(Integer _id, String email, String genre, String name, String password, String confirm_password, Long phone, Date birth_date, String type, String address, Integer cep, String city, String district, String state) {
         this._id = _id;
         this.email = email;
         this.genre = genre;
         this.name = name;
         this.password = password;
+        this.confirm_password = confirm_password;
         this.phone = phone;
         this.birth_date = birth_date;
         this.type = type;
@@ -77,6 +79,14 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirm_password() {
+        return confirm_password;
+    }
+
+    public void setConfirm_password(String confirm_password) {
+        this.confirm_password = confirm_password;
     }
 
     public Long getPhone() {
