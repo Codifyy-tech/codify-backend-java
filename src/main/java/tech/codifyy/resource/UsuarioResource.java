@@ -52,12 +52,22 @@ public class UsuarioResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response autenticar(Autenticacao aut) {
             Usuario usuario = usuariobo.listarEmail(aut);
-            if (usuario.getEmail().equals(aut.getEmail()) && usuario.getPassword().equals(aut.getPassword())) {
-                return Response
-                        .status(Response.Status.OK)
-                        .type(MediaType.APPLICATION_JSON)
-                        .build();
-            }
-        return null;
+            String respostaErro = "{\"message\": \"Error ao cadastrar\"}";
+            String respostaCerta = "{\"token\": " + usuario.get_id() + "}";
+        Response response;
+        if (usuario.getEmail().equals(aut.getEmail()) && usuario.getPassword().equals(aut.getPassword())) {
+            response = Response
+                    .status(Response.Status.OK)
+                    .type(MediaType.APPLICATION_JSON)
+                    .entity(respostaCerta)
+                    .build();
+        } else{
+            response = Response
+                    .status(Response.Status.OK)
+                    .type(MediaType.APPLICATION_JSON)
+                    .entity(respostaErro)
+                    .build();
+        }
+        return response;
     }
 }
