@@ -114,7 +114,7 @@ public class TrilhaDAO {
                         trilha.setUrl(rs.getString(4));
                         trilha.setAuthor(rs.getString(5));
                         trilha.setDescription(rs.getString(6));
-                        trilha.setTopics((List<String>) rs.getArray(7));
+                        trilha.setTopics(new ArrayList<>(Arrays.asList(rs.getString(7).split(","))));
                         trilha.setCategory(rs.getString(8));
                         return trilha;
                     } else{
